@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_steamlvlup"
+        android:icon="@drawable/ic_steamlvlup_black_24dp"
+        android:title="@string/title_steamlvlup_to_sce" />
+
+    <item
+        android:id="@+id/navigation_inventory"
+        android:icon="@drawable/ic_inventory_black_24dp"
+        android:title="@string/title_inventory_to_sce" />
+
+    <item
+        android:id="@+id/navigation_notifications"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="@string/title_notifications" />
+
+</menu>
