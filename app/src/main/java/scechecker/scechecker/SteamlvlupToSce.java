@@ -3,6 +3,7 @@ package scechecker.scechecker;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,18 +19,21 @@ public class SteamlvlupToSce extends Fragment {
     private TableManager tableManager;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
+        View viewToInflate = inflater.inflate(R.layout.steamlvlup_to_sce_fragment,
+                container, false);
         Activity activity = getActivity();
 
         tableManager = new TableManager(
-                (TableLayout) activity.findViewById(R.id.steamlvlup), activity);
+                (TableLayout) viewToInflate.findViewById(R.id.steamlvlup), activity);
 
         UrlHandler urlHandler = new UrlHandler(activity, tableManager);
         urlHandler.execute("steamlvlupToSce");
 
-        TextView gameLabel = (TextView) activity.findViewById(R.id.steamlvlup_0);
+        TextView gameLabel = (TextView) viewToInflate.findViewById(R.id.steamlvlup_0);
+        Log.i("thing", gameLabel.toString());
         gameLabel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -37,7 +41,7 @@ public class SteamlvlupToSce extends Fragment {
             }
         });
 
-        TextView steamlvlupPriceLabel = (TextView) activity.findViewById(R.id.steamlvlup_1);
+        TextView steamlvlupPriceLabel = (TextView) viewToInflate.findViewById(R.id.steamlvlup_1);
         steamlvlupPriceLabel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,18 +49,13 @@ public class SteamlvlupToSce extends Fragment {
             }
         });
 
-        TextView scePriceLabel = (TextView) activity.findViewById(R.id.steamlvlup_2);
+        TextView scePriceLabel = (TextView) viewToInflate.findViewById(R.id.steamlvlup_2);
         scePriceLabel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 tableManager.sortByColumn(2);
             }
         });
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return null; //TODO: make the xml for this thing
+        return viewToInflate;
     }
 }

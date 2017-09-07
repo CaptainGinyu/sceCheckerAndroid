@@ -11,9 +11,4 @@
         android:icon="@drawable/ic_inventory_black_24dp"
         android:title="@string/title_inventory_to_sce" />
 
-    <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_notifications" />
-
 </menu>

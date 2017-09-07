@@ -2,5 +2,4 @@
     <string name="app_name">SCE Checker</string>
     <string name="title_steamlvlup_to_sce">STEAMLVLUP</string>
     <string name="title_inventory_to_sce">Inventory</string>
-    <string name="title_notifications">Notifications</string>
 </resources>
