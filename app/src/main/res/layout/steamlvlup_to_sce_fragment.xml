@@ -54,16 +54,40 @@
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:background="#A9A9A9" />
 
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TableLayout
-            android:id="@+id/steamlvlup"
+        <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </TableLayout>
+            android:layout_height="wrap_content"
+            android:id="@+id/steamlvlup_buttonarea"
+            android:gravity="center"
+            android:layout_alignParentBottom="true">
 
-    </ScrollView>
+            <Button
+                android:id="@+id/steamlvlup_getprices"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:textAllCaps="false"
+                android:text="Get Prices" />
+        </TableRow>
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/steamlvlup_buttonarea">
+
+            <TableLayout
+                android:id="@+id/steamlvlup"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </TableLayout>
+
+        </ScrollView>
+    </RelativeLayout>
 </LinearLayout>

@@ -3,6 +3,7 @@ package scechecker.scechecker;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -26,6 +27,7 @@ public class UrlHandler extends AsyncTask<String, Void, JSONObject> {
     protected TableManager tableManager;
     protected boolean connectionException;
     protected String currTask;
+    protected Button button;
 
 
     public UrlHandler(Context context, TableManager tableManager) {
@@ -33,6 +35,22 @@ public class UrlHandler extends AsyncTask<String, Void, JSONObject> {
         this.tableManager = tableManager;
         connectionException = false;
         currTask = "";
+        button = null;
+    }
+
+    public UrlHandler(Context context, TableManager tableManager, Button button) {
+        this(context, tableManager);
+        this.button = button;
+
+    }
+
+    @Override
+    protected void onPreExecute() {
+        tableManager.showProgressBar();
+
+        if (button != null) {
+            button.setEnabled(false);
+        }
     }
 
     @Override
@@ -232,6 +250,11 @@ public class UrlHandler extends AsyncTask<String, Void, JSONObject> {
 
     @Override
     protected void onPostExecute(JSONObject response) {
+        tableManager.removeProgressBar();
+        if (button != null) {
+            button.setEnabled(true);
+        }
+
         if (connectionException) {
             Toast.makeText(context, "Problem reading from website", Toast.LENGTH_LONG).show();
             return;

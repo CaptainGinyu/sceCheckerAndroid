@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -20,6 +21,7 @@ public class TableManager {
 
     private TableLayout tableContent;
     private Context context;
+    private ProgressBar progressBar;
 
     private ArrayList<String[]> tableInfo;
 
@@ -28,6 +30,7 @@ public class TableManager {
     public TableManager(TableLayout tableContent, Context context) {
         this.tableContent = tableContent;
         this.context = context;
+        progressBar = new ProgressBar(context);
         tableInfo = new ArrayList<String[]>();
         columnBeingSortedBy = -1;
     }
@@ -92,5 +95,15 @@ public class TableManager {
         tableContent.removeAllViews();
         displayRows();
         columnBeingSortedBy = columnIndex;
+    }
+
+    public void showProgressBar() {
+        tableContent.removeAllViews();
+        tableContent.addView(progressBar);
+        progressBar.bringToFront();
+    }
+
+    public void removeProgressBar() {
+        tableContent.removeView(progressBar);
     }
 }
